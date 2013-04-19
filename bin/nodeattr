@@ -1,0 +1,33 @@
+require 'nodeattr'
+
+@genders_file = nil;
+@sep = "\n"
+
+optparse = OptionParser.new do |opts|
+  opts.banner = "\nUsage: #{$0} [options] query"
+
+  opts.on('-f genders', "genders file") do |file|
+      @genders_file = file
+  end
+
+  opts.on('-n', "space  separated  list") do
+      @sep = "\n"
+  end
+
+  opts.on('-s', "newline  separated  list") do
+      @sep = ' '
+  end
+
+  opts.on('-c', "comma separated list") do
+      @sep = ','
+  end
+
+end.parse!
+
+@gender = ARGV.shift
+
+n = NodeAttr.new @genders_file
+
+if nodes = n.query(@gender)
+  puts nodes.join(@sep)
+end
