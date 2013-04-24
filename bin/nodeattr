@@ -1,4 +1,5 @@
 require 'nodeattr'
+require 'optparse'
 
 @genders_file = nil;
 @sep = "\n"

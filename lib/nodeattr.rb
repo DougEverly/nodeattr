@@ -1,7 +1,5 @@
 require "nodeattr/version"
 
-require 'OptParse'
-
 class NodeAttr
   
   attr_accessor :genders
